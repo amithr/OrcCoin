@@ -18,7 +18,8 @@ class Blockchain:
         self.chain.append(genesis_block)
         
     
-    
+
+    # Transaction is standard transaction request from wallet with both signature and actual transaction data
     def create_new_block(self, proof_number, previous_hash, transaction):
         # Make sure transaction is valid by cryptographically comparing transaction signature
         # and sender's public key
@@ -58,8 +59,6 @@ class Blockchain:
     # new blocks from other nodes
     @staticmethod
     def is_new_block_valid(new_block, last_block):
-        print(new_block.timestamp)
-        print(last_block.timestamp)
         if ((last_block.chain_index + 1) !=  new_block.chain_index):
             return False
         elif new_block.timestamp <= last_block.timestamp:
@@ -91,7 +90,6 @@ class Blockchain:
         new_proof_number_guess = f'{new_proof_number}{new_proof_number}'.encode()
         # Hash this
         guess_hash = hashlib.sha256(new_proof_number_guess).hexdigest()
-        print(guess_hash)
         return guess_hash[:4] == "0000"
 
 

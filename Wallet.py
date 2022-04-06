@@ -1,7 +1,8 @@
+# This was mainly built for testing purposes to prototype the Wallet
+# The real wallet is a Next.js application
 # ECC cryptography library
 from fastecdsa import keys, curve, ecdsa
-from fastecdsa.curve import P256
-import pickle, json
+import json
 
 
 class Wallet:
@@ -25,6 +26,7 @@ class Wallet:
         r, s = ecdsa.sign(transaction, self.private_key)
         signature = (r, s)
 
+        # Sends both the actual transaction and the signature
         transaction_request = {
             "data": transaction,
             "signature": signature

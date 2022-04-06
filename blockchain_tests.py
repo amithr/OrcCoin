@@ -4,7 +4,7 @@ from Blockchain import Blockchain
 from Wallet import Wallet
 import time
 
-class NodeTest(unittest.TestCase):
+class BlockchainTest(unittest.TestCase):
 
     def test_mining(self):
         wallet = Wallet('http://192.168.0.0.1:8001')
